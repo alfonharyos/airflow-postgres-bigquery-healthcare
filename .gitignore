@@ -1,0 +1,7 @@
+keys/bigquery-key.json
+dags/__pycache__
+scripts/helpers/__pycache__
+.env
+.venv
+logs
+pgdata

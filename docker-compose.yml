@@ -1,0 +1,95 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: healthcare_db
+    ports:
+      - "5433:5432"
+    env_file:
+      - .env
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+      - ./sample-data:/opt/airflow/sample-data
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  db-init:
+    image: postgres:17
+    container_name: db-init
+    depends_on:
+      postgres:
+        condition: service_healthy  
+    volumes:
+      - ./scripts/entrypoint.sh:/docker-entrypoint-initdb.d/init.sh
+      - ./.env:/env_vars/.env
+    entrypoint: [ "/docker-entrypoint-initdb.d/init.sh" ]
+    env_file:
+      - .env
+    restart: "no"
+
+  airflow-webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: airflow-webserver
+    depends_on:
+      db-init:
+        condition: service_completed_successfully
+    env_file:
+      - .env
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@healthcare_db:5432/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+      AIRFLOW__LOGGING__BASE_LOG_FOLDER: /opt/airflow/logs
+      PYTHONPATH: /opt/airflow
+    volumes:
+      - ./logs:/opt/airflow/logs
+      - ./dags:/opt/airflow/dags
+      - ./scripts:/opt/airflow/scripts
+      - ./keys/bigquery-key.json:/opt/keys/bigquery-key.json
+      - ./sample-data:/opt/airflow/sample-data
+    ports:
+      - "8080:8080"
+    command: >
+      bash -c "
+        airflow db upgrade && \
+        airflow users create --username admin --password admin --firstname Admin --lastname User --role Admin --email admin@example.com && \
+        airflow connections add 'postgres_healthcare' --conn-uri 'postgresql+psycopg2://airflow:airflow@healthcare_db:5432/healthcare' && \
+        airflow connections add 'postgres_default' --conn-uri 'postgresql+psycopg2://airflow:airflow@healthcare_db:5432/healthcare' && \
+        airflow webserver
+      "
+
+  airflow-scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: airflow-scheduler
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: always
+    env_file:
+      - .env
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@healthcare_db:5432/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+      AIRFLOW__LOGGING__BASE_LOG_FOLDER: /opt/airflow/logs
+      PYTHONPATH: /opt/airflow
+    volumes:
+      - ./logs:/opt/airflow/logs
+      - ./dags:/opt/airflow/dags
+      - ./scripts:/opt/airflow/scripts
+      - ./keys/bigquery-key.json:/opt/keys/bigquery-key.json
+      - ./sample-data:/opt/airflow/sample-data
+    command: >
+      bash -c "
+        airflow db upgrade &&
+        airflow scheduler
+      "
+

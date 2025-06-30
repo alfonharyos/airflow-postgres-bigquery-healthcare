@@ -1,0 +1,50 @@
+[
+  {
+    "name": "patient_id", 
+    "type": "INTEGER", 
+    "mode": "REQUIRED", 
+    "description": "Unique ID of the patient"
+  },
+  {
+    "name": "name", 
+    "type": "STRING", 
+    "mode": "NULLABLE", 
+    "description": "Full name of the patient"
+  },
+  {
+    "name": "gender", 
+    "type": "STRING", 
+    "mode": "NULLABLE", 
+    "description": "Gender of the patient"
+  },
+  {
+    "name": "date_of_birth", 
+    "type": "DATE", 
+    "mode": "NULLABLE", 
+    "description": "Birth date of the patient"
+  },
+  {
+    "name": "phone", 
+    "type": "STRING", 
+    "mode": "NULLABLE", 
+    "description": "Contact number"
+  },
+  {
+    "name": "address", 
+    "type": "STRING", 
+    "mode": "NULLABLE", 
+    "description": "Residential address"
+  },
+  {
+    "name": "insurance_id", 
+    "type": "INTEGER", 
+    "mode": "NULLABLE", 
+    "description": "Linked insurance provider ID"
+  },
+  {
+    "name": "created_at", 
+    "type": "TIMESTAMP", 
+    "mode": "NULLABLE", 
+    "description": "Ingestion timestamp into BigQuery"
+  }
+]

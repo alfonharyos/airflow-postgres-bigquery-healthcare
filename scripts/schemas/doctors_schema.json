@@ -1,0 +1,32 @@
+[
+  {
+    "name": "doctor_id", 
+    "type": "INTEGER", 
+    "mode": "REQUIRED", 
+    "description": "Unique doctor ID"
+  },
+  {
+    "name": "name", 
+    "type": "STRING", 
+    "mode": "NULLABLE", 
+    "description": "Full name of the doctor"
+  },
+  {
+    "name": "specialty", 
+    "type": "STRING", 
+    "mode": "NULLABLE", 
+    "description": "Specialty of the doctor"
+  },
+  {
+    "name": "hospital_id", 
+    "type": "INTEGER", 
+    "mode": "NULLABLE", 
+    "description": "Hospital where the doctor works"
+  },
+  {
+    "name": "created_at", 
+    "type": "TIMESTAMP", 
+    "mode": "NULLABLE", 
+    "description": "Ingestion timestamp into BigQuery"
+  }
+]

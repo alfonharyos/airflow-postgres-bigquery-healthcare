@@ -1,0 +1,50 @@
+[
+  {
+    "name": "appointment_id", 
+    "type": "INTEGER", 
+    "mode": "REQUIRED", 
+    "description": "Unique ID of the appointment"
+  },
+  {
+    "name": "patient_id", 
+    "type": "INTEGER", 
+    "mode": "REQUIRED", 
+    "description": "Referenced patient ID"
+  },
+  {
+    "name": "doctor_id", 
+    "type": "INTEGER", 
+    "mode": "REQUIRED", 
+    "description": "Referenced doctor ID"
+  },
+  {
+    "name": "hospital_id", 
+    "type": "INTEGER", 
+    "mode": "REQUIRED", 
+    "description": "Referenced hospital ID"
+  },
+  {
+    "name": "appointment_date", 
+    "type": "DATE", 
+    "mode": "NULLABLE", 
+    "description": "Date of the appointment"
+  },
+  {
+    "name": "reason", 
+    "type": "STRING", 
+    "mode": "NULLABLE", 
+    "description": "Reason for the appointment"
+  },
+  {
+    "name": "status", 
+    "type": "STRING", 
+    "mode": "NULLABLE", 
+    "description": "Status of the appointment (e.g., completed, cancelled)"
+  },
+  {
+    "name": "created_at", 
+    "type": "TIMESTAMP", 
+    "mode": "NULLABLE", 
+    "description": "Ingestion timestamp into BigQuery"
+  }
+]

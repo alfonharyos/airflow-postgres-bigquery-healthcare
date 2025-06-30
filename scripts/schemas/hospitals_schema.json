@@ -1,0 +1,32 @@
+[
+  {
+    "name": "hospital_id", 
+    "type": "INTEGER", 
+    "mode": "REQUIRED", 
+    "description": "Unique hospital ID"
+  },
+  {
+    "name": "hospital_name", 
+    "type": "STRING", 
+    "mode": "NULLABLE", 
+    "description": "Name of the hospital"
+  },
+  {
+    "name": "city", 
+    "type": "STRING", 
+    "mode": "NULLABLE", 
+    "description": "City where the hospital is located"
+  },
+  {
+    "name": "specialization", 
+    "type": "STRING", 
+    "mode": "NULLABLE", 
+    "description": "Specialization or department"
+  },
+  {
+    "name": "created_at", 
+    "type": "TIMESTAMP", 
+    "mode": "NULLABLE", 
+    "description": "Ingestion timestamp into BigQuery"
+  }
+]

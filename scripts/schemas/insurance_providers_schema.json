@@ -1,0 +1,32 @@
+[
+  {
+    "name": "insurance_id", 
+    "type": "INTEGER", 
+    "mode": "REQUIRED", 
+    "description": "Unique insurance provider ID"
+  },
+  {
+    "name": "provider_name", 
+    "type": "STRING", 
+    "mode": "NULLABLE", 
+    "description": "Name of the insurance provider"
+  },
+  {
+    "name": "plan_type", 
+    "type": "STRING", 
+    "mode": "NULLABLE", 
+    "description": "Type of insurance plan"
+  },
+  {
+    "name": "coverage_percent", 
+    "type": "INTEGER", 
+    "mode": "NULLABLE", 
+    "description": "Percentage of cost covered"
+  },
+  {
+    "name": "created_at", 
+    "type": "TIMESTAMP", 
+    "mode": "NULLABLE", 
+    "description": "Ingestion timestamp into BigQuery"
+  }
+]

@@ -1,0 +1,67 @@
+[
+  {
+    "name": "bill_id", 
+    "type": "INTEGER", 
+    "mode": "REQUIRED", 
+    "description": "Unique bill ID"
+  },
+  {
+    "name": "patient_id", 
+    "type": "INTEGER", 
+    "mode": "REQUIRED", 
+    "description": "Referenced patient ID"
+  },
+  {
+    "name": "appointment_id", 
+    "type": "INTEGER", 
+    "mode": "REQUIRED", 
+    "description": "Referenced appointment ID"
+  },
+  {
+    "name": "insurance_id", 
+    "type": "INTEGER", "mode": "REQUIRED", 
+    "description": "Referenced insurance provider ID"
+  },
+  {
+    "name": "bill_date", 
+    "type": "DATE", 
+    "mode": "NULLABLE", 
+    "description": "Date of billing"
+  },
+  {
+    "name": "total_amount", 
+    "type": "NUMERIC", 
+    "mode": "NULLABLE", 
+    "description": "Total billed amount"
+  },
+  {
+    "name": "payment_status", 
+    "type": "STRING", 
+    "mode": "NULLABLE", 
+    "description": "Status of the payment"
+  },
+  {
+    "name": "payment_method", 
+    "type": "STRING", 
+    "mode": "NULLABLE", 
+    "description": "Payment method used"
+  },
+  {
+    "name": "insurance_coverage", 
+    "type": "NUMERIC", 
+    "mode": "NULLABLE", 
+    "description": "Covered amount by insurance"
+  },
+  {
+    "name": "amount_due", 
+    "type": "NUMERIC", 
+    "mode": "NULLABLE", 
+    "description": "Remaining amount to be paid"
+  },
+  {
+    "name": "created_at", 
+    "type": "TIMESTAMP", 
+    "mode": "NULLABLE", 
+    "description": "Ingestion timestamp into BigQuery"
+  }
+]
