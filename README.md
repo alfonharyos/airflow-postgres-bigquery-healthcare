@@ -128,22 +128,22 @@ porject/
 
 ## Hasil
 1. Airflow dags
-    ![airflow dags](imgs\dag-airflow.png)
+    ![airflow dags](./imgs/dag-airflow.png)
 
 2. load_postgres_healthcare dags
-    ![load to posgres](imgs\dag-load-posgres-success-1.png)
-    ![load to posgres graph](imgs\dag-load-posgres-success-2.png)
+    ![load to posgres](./imgs/dag-load-posgres-success-1.png)
+    ![load to posgres graph](./imgs/dag-load-posgres-success-2.png)
     
     helathcare table | posgre       
-    ![healthcare table pg](imgs\posgres-db-tables.png)
+    ![healthcare table pg](./imgs/posgres-db-tables.png)
 
 3. create_bq_tables dags
-    ![create table dags](imgs\dag-create-bq-table-success-1.png)
-    ![create table graph](imgs\dag-create-bq-table-success-2.png)
+    ![create table dags](./imgs/dag-create-bq-table-success-1.png)
+    ![create table graph](./imgs/dag-create-bq-table-success-2.png)
 
     heathcare table | bigquery       
-    ![healthcare table bq](imgs\bq-tables.png)
+    ![healthcare table bq](./imgs/bq-tables.png)
 
 4. el_postgres_to_bq dags
-    ![el to bq](imgs\dag-el-to-bq-success-1.png)
-    ![el to bq garph](imgs\dag-el-to-bq-success-2.png)
+    ![el to bq](./imgs/dag-el-to-bq-success-1.png)
+    ![el to bq garph](./imgs/dag-el-to-bq-success-2.png)
